@@ -1,0 +1,19 @@
+{
+  "scenario": "3_tampered",
+  "audit_date": "2026-09-16",
+  "description": "Each file looks compliant, but the evidence contains impossible or contradictory values.",
+  "expected": {
+    "1": "Flag",
+    "2": "Flag",
+    "3": "Flag",
+    "4": "Flag",
+    "5": "Flag"
+  },
+  "reason": {
+    "1": "Logs contain an MFA success with no challenge, a future-dated sign-in and a duplicate record.",
+    "2": "BKP-3001 restore test is dated before the backup was taken.",
+    "3": "customer-financial-data pairs AES256 with a KMS key ID, which AWS does not accept.",
+    "4": "Report says the exercise was 2025-02-10; the register says 2026-04-05.",
+    "5": "Duplicate employee ID and a completion date after the audit date."
+  }
+}

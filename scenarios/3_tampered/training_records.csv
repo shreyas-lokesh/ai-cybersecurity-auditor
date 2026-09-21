@@ -1,0 +1,11 @@
+employee_id,name,department,course,completed,completion_date
+E001,Alice Johnson,IT,Security Awareness and Phishing 2026,Yes,2026-02-10
+E002,John Smith,IT,Security Awareness and Phishing 2026,Yes,2026-03-11
+E003,Maya Patel,IT,Security Awareness and Phishing 2026,Yes,2026-04-12
+E004,Robert Chen,IT,Security Awareness and Phishing 2026,Yes,2026-12-01
+E005,Sarah Williams,Security,Security Awareness and Phishing 2026,Yes,2026-06-14
+E006,Tom Evans,Finance,Security Awareness and Phishing 2026,Yes,2026-07-15
+E007,Priya Shah,Finance,Security Awareness and Phishing 2026,Yes,2026-02-16
+E008,Liam Brown,Sales,Security Awareness and Phishing 2026,Yes,2026-03-17
+E009,Emma Wilson,Sales,Security Awareness and Phishing 2026,Yes,2026-04-18
+E009,Omar Ali,HR,Security Awareness and Phishing 2026,Yes,2026-05-10

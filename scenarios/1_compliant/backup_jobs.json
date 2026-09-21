@@ -1,0 +1,43 @@
+{
+  "schedule": {
+    "backup_frequency": "daily incremental, weekly full",
+    "restore_test_frequency": "quarterly",
+    "servers": [
+      "DB-Prod-01",
+      "DB-Prod-02",
+      "App-Prod-01"
+    ]
+  },
+  "jobs": [
+    {
+      "job_id": "BKP-1001",
+      "server": "DB-Prod-01",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-01",
+      "test_result": "Completed"
+    },
+    {
+      "job_id": "BKP-1002",
+      "server": "DB-Prod-02",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-02",
+      "test_result": "Completed"
+    },
+    {
+      "job_id": "BKP-1003",
+      "server": "App-Prod-01",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-03",
+      "test_result": "Completed"
+    }
+  ]
+}

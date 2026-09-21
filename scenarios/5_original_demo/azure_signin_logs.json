@@ -1,0 +1,67 @@
+[
+  {
+    "id": "signin_001",
+    "timestamp": "2026-03-28T08:14:22Z",
+    "userPrincipalName": "admin@contoso.com",
+    "displayName": "Alice Johnson",
+    "role": "Global Administrator",
+    "ipAddress": "192.168.1.10",
+    "authenticationMethod": "Password + TOTP (Microsoft Authenticator)",
+    "mfaChallenged": true,
+    "mfaSucceeded": true,
+    "status": "Success",
+    "location": "London, UK"
+  },
+  {
+    "id": "signin_002",
+    "timestamp": "2026-03-28T09:02:11Z",
+    "userPrincipalName": "j.smith@contoso.com",
+    "displayName": "John Smith",
+    "role": "Server Administrator",
+    "ipAddress": "192.168.1.22",
+    "authenticationMethod": "Password Only",
+    "mfaChallenged": false,
+    "mfaSucceeded": false,
+    "status": "Success",
+    "location": "Manchester, UK"
+  },
+  {
+    "id": "signin_003",
+    "timestamp": "2026-03-29T10:45:00Z",
+    "userPrincipalName": "m.patel@contoso.com",
+    "displayName": "Maya Patel",
+    "role": "Database Administrator",
+    "ipAddress": "192.168.1.35",
+    "authenticationMethod": "Password + TOTP (Microsoft Authenticator)",
+    "mfaChallenged": true,
+    "mfaSucceeded": true,
+    "status": "Success",
+    "location": "Birmingham, UK"
+  },
+  {
+    "id": "signin_004",
+    "timestamp": "2026-03-30T14:20:33Z",
+    "userPrincipalName": "r.chen@contoso.com",
+    "displayName": "Robert Chen",
+    "role": "Network Administrator",
+    "ipAddress": "192.168.1.41",
+    "authenticationMethod": "Password Only",
+    "mfaChallenged": false,
+    "mfaSucceeded": false,
+    "status": "Success",
+    "location": "Leeds, UK"
+  },
+  {
+    "id": "signin_005",
+    "timestamp": "2026-03-31T11:05:47Z",
+    "userPrincipalName": "s.williams@contoso.com",
+    "displayName": "Sarah Williams",
+    "role": "Security Administrator",
+    "ipAddress": "192.168.1.55",
+    "authenticationMethod": "Password + TOTP (Microsoft Authenticator)",
+    "mfaChallenged": true,
+    "mfaSucceeded": true,
+    "status": "Success",
+    "location": "London, UK"
+  }
+]

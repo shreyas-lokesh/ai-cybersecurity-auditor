@@ -1,0 +1,19 @@
+{
+  "scenario": "4_rules_blind_spot",
+  "audit_date": "2026-09-16",
+  "description": "Problems that sit in free text or method names, which the rule checks do not interpret.",
+  "expected": {
+    "1": "Fail",
+    "2": "Fail",
+    "3": "Pass",
+    "4": "Flag",
+    "5": "Flag"
+  },
+  "reason": {
+    "1": "Robert Chen signs in with SMS, which policy 2.2 does not allow.",
+    "2": "BKP-4001 restore failed checksum verification (notes field).",
+    "3": "Unchanged from the compliant scenario; checks for false alarms.",
+    "4": "The exercise was abandoned, so the plan was not actually tested.",
+    "5": "Records are for fire safety, not security awareness training."
+  }
+}

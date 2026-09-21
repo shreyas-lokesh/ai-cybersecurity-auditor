@@ -1,0 +1,583 @@
+{
+  "settings": {
+    "started": "2026-09-16T14:22:34",
+    "model": "none (dry run)",
+    "num_ctx": 8192,
+    "temperature": 0,
+    "repeats": 0,
+    "scenarios": [
+      "1_compliant",
+      "2_non_compliant",
+      "3_tampered",
+      "4_rules_blind_spot",
+      "5_original_demo"
+    ],
+    "conditions": [
+      "rules"
+    ],
+    "finished": "2026-09-16T14:22:34"
+  },
+  "cases": [
+    {
+      "scenario": "1_compliant",
+      "question_no": 1,
+      "expected": "Pass",
+      "reason": "All five admins covered by an enforced TOTP-only policy; all 30 sign-ins used TOTP.",
+      "evidence": {
+        "Security policy": {
+          "file": "security_policy.txt",
+          "sha256": "c7036b6655344ef1ebaa1dc94424a909254e7c5d7d80d30e616d3e8c85816972"
+        },
+        "Entra ID Conditional Access config": {
+          "file": "entra_id_config.json",
+          "sha256": "9f4a5d6458c8fa468e778397863bb6e4c463d565eea74c0fbc9a11eaf30633ed"
+        },
+        "Privileged account roster": {
+          "file": "privileged_accounts.csv",
+          "sha256": "7ba35453b2e70041d7cb1a5ff19f930c80ff82236108a9ff85e72b181669d011"
+        },
+        "Azure sign-in logs": {
+          "file": "azure_signin_logs.json",
+          "sha256": "586b4093806b1baa9baf341a5b75107278a95483a0c18009598f5f1d588e9be1"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: policy last updated 'January 2026'; logs cover 2026-03-02 to 2026-08-24."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "1_compliant",
+      "question_no": 2,
+      "expected": "Pass",
+      "reason": "Schedule defined; recent successful restore tests on every server.",
+      "evidence": {
+        "Backup schedule and job log": {
+          "file": "backup_jobs.json",
+          "sha256": "fb720fb26ff0cf254996e7231c3209165ae4f59e9dba820c63aa111dafb4798a"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: schedule: backups daily incremental, weekly full, restore tests quarterly."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "1_compliant",
+      "question_no": 3,
+      "expected": "Pass",
+      "reason": "All three inventoried stores encrypted with aws:kms.",
+      "evidence": {
+        "Storage encryption config": {
+          "file": "encryption_config.json",
+          "sha256": "7b44c4314701661473f4c5e83649d7264b5db06d7b448ffcd7be5417adacc715"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: arn:aws:s3:::customer-financial-data encrypted with aws:kms.",
+        "NOTE: arn:aws:s3:::customer-pii encrypted with aws:kms.",
+        "NOTE: arn:aws:s3:::backup-archive encrypted with aws:kms."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "1_compliant",
+      "question_no": 4,
+      "expected": "Pass",
+      "reason": "Current v4.2 plan supplied; tabletop completed 2026-04-05 and report matches.",
+      "evidence": {
+        "Incident response plan register": {
+          "file": "irp_register.csv",
+          "sha256": "6cd6a58f78af5b7f2ff7a8b2bce1d32524e4effd7f0638669c3af1be3e3da173"
+        },
+        "Incident response plan document": {
+          "file": "irp_document.txt",
+          "sha256": "5622636c542402d8f1993128578c82a205df1eb8313fe96c94a464697c831113"
+        },
+        "Tabletop exercise report": {
+          "file": "tabletop_report.txt",
+          "sha256": "26129cfb3476ea6e21a94d578d950752e0c913bbd627545836b3bad1d6fc43fa"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: register: Incident_Response_Plan_Master v4.2, updated 2025-11-10, tested 2026-04-05, status 'Compliant' (vendor's own assertion)."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "1_compliant",
+      "question_no": 5,
+      "expected": "Pass",
+      "reason": "All 10 staff completed security awareness training in 2026.",
+      "evidence": {
+        "Training completion records": {
+          "file": "training_records.csv",
+          "sha256": "3861cc833c629fa1c8f3a1c9e6ba81204dcafea20e5ebf7111b326dd1eddab35"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: 10 of 10 staff completed training in the last 12 months."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "2_non_compliant",
+      "question_no": 1,
+      "expected": "Fail",
+      "reason": "Policy is report-only; two admins sign in with password only.",
+      "evidence": {
+        "Security policy": {
+          "file": "security_policy.txt",
+          "sha256": "c7036b6655344ef1ebaa1dc94424a909254e7c5d7d80d30e616d3e8c85816972"
+        },
+        "Entra ID Conditional Access config": {
+          "file": "entra_id_config.json",
+          "sha256": "1900c74692f9bbfa0152d2840562e433fcdafad04500905733c15543d9214f28"
+        },
+        "Privileged account roster": {
+          "file": "privileged_accounts.csv",
+          "sha256": "eed8debf2065217719d11949eb85bbc557f85f56f00c1cb375f8130f6d62c2da"
+        },
+        "Azure sign-in logs": {
+          "file": "azure_signin_logs.json",
+          "sha256": "0a4fc1f68f3204921f4579a60298bcec7db709895f2db09302fffc9193945761"
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "FAIL: MFA policy state is 'enabledForReportingButNotEnforced', so it is not enforced.",
+        "FAIL: active privileged account j.smith@contoso.com has MFA disabled in the roster.",
+        "FAIL: active privileged account r.chen@contoso.com has MFA disabled in the roster.",
+        "FAIL: John Smith (Server Administrator) signed in successfully without MFA ('Password Only') 6 time(s): 2026-03-08, 2026-04-07, 2026-05-07, 2026-06-06, 2026-07-06, 2026-08-06.",
+        "FAIL: Robert Chen (Network Administrator) signed in successfully without MFA ('Password Only') 6 time(s): 2026-03-20, 2026-04-19, 2026-05-19, 2026-06-18, 2026-07-18, 2026-08-18.",
+        "NOTE: policy last updated 'January 2026'; logs cover 2026-03-02 to 2026-08-24."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "2_non_compliant",
+      "question_no": 2,
+      "expected": "Fail",
+      "reason": "One backup failed and two servers have no restore test.",
+      "evidence": {
+        "Backup schedule and job log": {
+          "file": "backup_jobs.json",
+          "sha256": "09369fbda0c6879397beb02c344c2ccb82152b5a31863c2b5753adbf3a1cb368"
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "FAIL: job BKP-2002 on DB-Prod-02 status 'Failed'.",
+        "FAIL: job BKP-2002 on DB-Prod-02 has no restoration test.",
+        "FAIL: job BKP-2003 on App-Prod-01 has no restoration test.",
+        "NOTE: schedule: backups daily incremental, weekly full, restore tests quarterly."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "2_non_compliant",
+      "question_no": 3,
+      "expected": "Fail",
+      "reason": "customer-pii has no encryption at rest.",
+      "evidence": {
+        "Storage encryption config": {
+          "file": "encryption_config.json",
+          "sha256": "e52d7e12eb3f1e8b6522fa2922280a8f8512ef5a0df3363b8271d47dd57320b9"
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "NOTE: arn:aws:s3:::customer-financial-data encrypted with aws:kms.",
+        "FAIL: arn:aws:s3:::customer-pii has no encryption at rest configured.",
+        "NOTE: arn:aws:s3:::backup-archive encrypted with aws:kms."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "2_non_compliant",
+      "question_no": 4,
+      "expected": "Fail",
+      "reason": "The register lists no incident response plan and none was supplied.",
+      "evidence": {
+        "Incident response plan register": {
+          "file": "irp_register.csv",
+          "sha256": "aeb9a18e760346e57f549ea9bea1687e8a78d5d28135719bfd1d722185dd993d"
+        },
+        "Incident response plan document": {
+          "file": "irp_document.txt",
+          "sha256": null
+        },
+        "Tabletop exercise report": {
+          "file": "tabletop_report.txt",
+          "sha256": null
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "FAIL: the register lists no incident response plan."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "2_non_compliant",
+      "question_no": 5,
+      "expected": "Fail",
+      "reason": "No staff have completed training.",
+      "evidence": {
+        "Training completion records": {
+          "file": "training_records.csv",
+          "sha256": "dd9bec1928dc361c29fe4a56d56a8479b9d437392d9214d468d49cf8ec77d389"
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "NOTE: 0 of 10 staff completed training in the last 12 months.",
+        "FAIL: no staff have completed training in the last 12 months."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "3_tampered",
+      "question_no": 1,
+      "expected": "Flag",
+      "reason": "Logs contain an MFA success with no challenge, a future-dated sign-in and a duplicate record.",
+      "evidence": {
+        "Security policy": {
+          "file": "security_policy.txt",
+          "sha256": "c7036b6655344ef1ebaa1dc94424a909254e7c5d7d80d30e616d3e8c85816972"
+        },
+        "Entra ID Conditional Access config": {
+          "file": "entra_id_config.json",
+          "sha256": "9f4a5d6458c8fa468e778397863bb6e4c463d565eea74c0fbc9a11eaf30633ed"
+        },
+        "Privileged account roster": {
+          "file": "privileged_accounts.csv",
+          "sha256": "7ba35453b2e70041d7cb1a5ff19f930c80ff82236108a9ff85e72b181669d011"
+        },
+        "Azure sign-in logs": {
+          "file": "azure_signin_logs.json",
+          "sha256": "76e47f48cb0f682e150a57e323989da1e624f41668d372b27dcdb306c5c33782"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "TAMPER: sign-in by Maya Patel (Database Administrator) at 2026-04-13T12:19:00Z records MFA success without an MFA challenge.",
+        "TAMPER: sign-in by Maya Patel (Database Administrator) at 2026-11-03T09:15:00Z is dated after the audit date.",
+        "TAMPER: duplicate sign-in id signin_020.",
+        "NOTE: policy last updated 'January 2026'; logs cover 2026-03-02 to 2026-11-03."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "3_tampered",
+      "question_no": 2,
+      "expected": "Flag",
+      "reason": "BKP-3001 restore test is dated before the backup was taken.",
+      "evidence": {
+        "Backup schedule and job log": {
+          "file": "backup_jobs.json",
+          "sha256": "5a1ae6bbeb4520f69f1e252301528243b10614d2ada22b076773bf4ee7a20f88"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "TAMPER: job BKP-3001 restore test (2026-08-12) predates the backup (2026-08-30).",
+        "NOTE: schedule: backups daily incremental, weekly full, restore tests quarterly."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "3_tampered",
+      "question_no": 3,
+      "expected": "Flag",
+      "reason": "customer-financial-data pairs AES256 with a KMS key ID, which AWS does not accept.",
+      "evidence": {
+        "Storage encryption config": {
+          "file": "encryption_config.json",
+          "sha256": "28bb9d558df7cd3f592d82c161f086fad5a10f3e0e76d26bb2da620843c37a07"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "TAMPER: arn:aws:s3:::customer-financial-data pairs 'AES256' with a KMS key ID, which AWS only accepts with 'aws:kms'. The export may have been edited; request a fresh one.",
+        "NOTE: arn:aws:s3:::customer-pii encrypted with aws:kms.",
+        "NOTE: arn:aws:s3:::backup-archive encrypted with aws:kms."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "3_tampered",
+      "question_no": 4,
+      "expected": "Flag",
+      "reason": "Report says the exercise was 2025-02-10; the register says 2026-04-05.",
+      "evidence": {
+        "Incident response plan register": {
+          "file": "irp_register.csv",
+          "sha256": "6cd6a58f78af5b7f2ff7a8b2bce1d32524e4effd7f0638669c3af1be3e3da173"
+        },
+        "Incident response plan document": {
+          "file": "irp_document.txt",
+          "sha256": "5622636c542402d8f1993128578c82a205df1eb8313fe96c94a464697c831113"
+        },
+        "Tabletop exercise report": {
+          "file": "tabletop_report.txt",
+          "sha256": "d576b3168f4bdd752812e74fa294ccd7ab656e7c2bb24b32125a329c32b9cc0c"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "NOTE: register: Incident_Response_Plan_Master v4.2, updated 2025-11-10, tested 2026-04-05, status 'Compliant' (vendor's own assertion).",
+        "TAMPER: report says the exercise was on 2025-02-10, register says 2026-04-05."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "3_tampered",
+      "question_no": 5,
+      "expected": "Flag",
+      "reason": "Duplicate employee ID and a completion date after the audit date.",
+      "evidence": {
+        "Training completion records": {
+          "file": "training_records.csv",
+          "sha256": "2819d0891c7a1b942799d4a5b312b78b1cedd76b677524a21b219b6aca6d4f96"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "TAMPER: duplicate employee IDs in the training records.",
+        "TAMPER: E004 completion date 2026-12-01 is after the audit date.",
+        "NOTE: 9 of 10 staff completed training in the last 12 months.",
+        "FLAG: training coverage is below 100%."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "4_rules_blind_spot",
+      "question_no": 1,
+      "expected": "Fail",
+      "reason": "Robert Chen signs in with SMS, which policy 2.2 does not allow.",
+      "evidence": {
+        "Security policy": {
+          "file": "security_policy.txt",
+          "sha256": "c7036b6655344ef1ebaa1dc94424a909254e7c5d7d80d30e616d3e8c85816972"
+        },
+        "Entra ID Conditional Access config": {
+          "file": "entra_id_config.json",
+          "sha256": "9f4a5d6458c8fa468e778397863bb6e4c463d565eea74c0fbc9a11eaf30633ed"
+        },
+        "Privileged account roster": {
+          "file": "privileged_accounts.csv",
+          "sha256": "7ba35453b2e70041d7cb1a5ff19f930c80ff82236108a9ff85e72b181669d011"
+        },
+        "Azure sign-in logs": {
+          "file": "azure_signin_logs.json",
+          "sha256": "900f97e4fef587879b7746bf1f99b1d7fcd6fb79212be3812cc273aef12ab0a2"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: policy last updated 'January 2026'; logs cover 2026-03-02 to 2026-08-24."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "4_rules_blind_spot",
+      "question_no": 2,
+      "expected": "Fail",
+      "reason": "BKP-4001 restore failed checksum verification (notes field).",
+      "evidence": {
+        "Backup schedule and job log": {
+          "file": "backup_jobs.json",
+          "sha256": "78995d262df3f3236889a3585f6370c5ea60b1bf8219efdf4ee5b860f5a51f68"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: schedule: backups daily incremental, weekly full, restore tests quarterly."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "4_rules_blind_spot",
+      "question_no": 3,
+      "expected": "Pass",
+      "reason": "Unchanged from the compliant scenario; checks for false alarms.",
+      "evidence": {
+        "Storage encryption config": {
+          "file": "encryption_config.json",
+          "sha256": "7b44c4314701661473f4c5e83649d7264b5db06d7b448ffcd7be5417adacc715"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: arn:aws:s3:::customer-financial-data encrypted with aws:kms.",
+        "NOTE: arn:aws:s3:::customer-pii encrypted with aws:kms.",
+        "NOTE: arn:aws:s3:::backup-archive encrypted with aws:kms."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "4_rules_blind_spot",
+      "question_no": 4,
+      "expected": "Flag",
+      "reason": "The exercise was abandoned, so the plan was not actually tested.",
+      "evidence": {
+        "Incident response plan register": {
+          "file": "irp_register.csv",
+          "sha256": "6cd6a58f78af5b7f2ff7a8b2bce1d32524e4effd7f0638669c3af1be3e3da173"
+        },
+        "Incident response plan document": {
+          "file": "irp_document.txt",
+          "sha256": "5622636c542402d8f1993128578c82a205df1eb8313fe96c94a464697c831113"
+        },
+        "Tabletop exercise report": {
+          "file": "tabletop_report.txt",
+          "sha256": "78feb013eaf1b163671487953bc98b4d834295a4bb84390b97fee67629e936ee"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: register: Incident_Response_Plan_Master v4.2, updated 2025-11-10, tested 2026-04-05, status 'Compliant' (vendor's own assertion)."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "4_rules_blind_spot",
+      "question_no": 5,
+      "expected": "Flag",
+      "reason": "Records are for fire safety, not security awareness training.",
+      "evidence": {
+        "Training completion records": {
+          "file": "training_records.csv",
+          "sha256": "7b10606635bfec3b6e6100331732fd798486c14b107fe683a6318e0e50e81464"
+        }
+      },
+      "rule_verdict": "Pass",
+      "rule_findings": [
+        "NOTE: 10 of 10 staff completed training in the last 12 months."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "5_original_demo",
+      "question_no": 1,
+      "expected": "Fail",
+      "reason": "John Smith and Robert Chen signed in with password only.",
+      "evidence": {
+        "Security policy": {
+          "file": "security_policy.txt",
+          "sha256": "c19b3eac53b4702c3913509578ed0071a835e0acdb86d7f23a9117efb8449cd6"
+        },
+        "Entra ID Conditional Access config": {
+          "file": "entra_id_config.json",
+          "sha256": "ca4a05edf2be7293c83bfcbcc3acaa9deaa3f2f52adaa8b4336ad83a93e74630"
+        },
+        "Privileged account roster": {
+          "file": "privileged_accounts.csv",
+          "sha256": "eed8debf2065217719d11949eb85bbc557f85f56f00c1cb375f8130f6d62c2da"
+        },
+        "Azure sign-in logs": {
+          "file": "azure_signin_logs.json",
+          "sha256": "263fa2119cdcca5548e9ed968f6d0742f1251f8000c07d8a8f3e94833da411dd"
+        }
+      },
+      "rule_verdict": "Fail",
+      "rule_findings": [
+        "FLAG: the policy allows only TOTP, but the config accepts any MFA method (no authentication strength set).",
+        "FAIL: active privileged account j.smith@contoso.com has MFA disabled in the roster.",
+        "FAIL: active privileged account r.chen@contoso.com has MFA disabled in the roster.",
+        "FAIL: John Smith (Server Administrator) signed in successfully without MFA ('Password Only') 1 time(s): 2026-03-28.",
+        "NOTE: the config says MFA is enforced for 'Server Administrator', yet these sign-ins bypassed it (report-only mode, an exclusion, legacy authentication, or evidence that does not match the live system).",
+        "FAIL: Robert Chen (Network Administrator) signed in successfully without MFA ('Password Only') 1 time(s): 2026-03-30.",
+        "NOTE: the config says MFA is enforced for 'Network Administrator', yet these sign-ins bypassed it (report-only mode, an exclusion, legacy authentication, or evidence that does not match the live system).",
+        "NOTE: policy last updated 'September 2026'; logs cover 2026-03-28 to 2026-03-31.",
+        "NOTE: only 5 sign-in events supplied."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "5_original_demo",
+      "question_no": 2,
+      "expected": "Flag",
+      "reason": "Two tested backups but no schedule.",
+      "evidence": {
+        "Backup schedule and job log": {
+          "file": "backup_jobs.json",
+          "sha256": "e518fab74d44bb4a9392cc72403c6c702e9c8eea1b7b066b55434934656a8df5"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "FLAG: 2 job(s) supplied but no backup schedule, so 'regularly' cannot be confirmed."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "5_original_demo",
+      "question_no": 3,
+      "expected": "Flag",
+      "reason": "AES256 paired with a KMS key ID; one bucket only; no inventory.",
+      "evidence": {
+        "Storage encryption config": {
+          "file": "encryption_config.json",
+          "sha256": "fff5cb52f8475bd369c958349a2583d691b47dd2cad23ac92299a870a87693af"
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "TAMPER: arn:aws:s3:::customer-financial-data pairs 'AES256' with a KMS key ID, which AWS only accepts with 'aws:kms'. The export may have been edited; request a fresh one.",
+        "FLAG: no data store inventory, so the scope of encryption cannot be confirmed."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "5_original_demo",
+      "question_no": 4,
+      "expected": "Flag",
+      "reason": "Only a register entry; no plan or test report.",
+      "evidence": {
+        "Incident response plan register": {
+          "file": "irp_register.csv",
+          "sha256": "6cd6a58f78af5b7f2ff7a8b2bce1d32524e4effd7f0638669c3af1be3e3da173"
+        },
+        "Incident response plan document": {
+          "file": "irp_document.txt",
+          "sha256": null
+        },
+        "Tabletop exercise report": {
+          "file": "tabletop_report.txt",
+          "sha256": null
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "NOTE: register: Incident_Response_Plan_Master v4.2, updated 2025-11-10, tested 2026-04-05, status 'Compliant' (vendor's own assertion).",
+        "FLAG: the plan document itself was not supplied.",
+        "FLAG: no tabletop exercise report was supplied."
+      ],
+      "runs": []
+    },
+    {
+      "scenario": "5_original_demo",
+      "question_no": 5,
+      "expected": "Flag",
+      "reason": "No training evidence supplied.",
+      "evidence": {
+        "Training completion records": {
+          "file": "training_records.csv",
+          "sha256": null
+        }
+      },
+      "rule_verdict": "Flag",
+      "rule_findings": [
+        "MISSING EVIDENCE: File not found: training_records.csv. Files in folder: azure_signin_logs.json, backup_jobs.json, encryption_config.json, entra_id_config.json, expected.json, irp_register.csv, privileged_accounts.csv, security_policy.txt"
+      ],
+      "runs": []
+    }
+  ]
+}

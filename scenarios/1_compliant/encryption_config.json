@@ -1,0 +1,54 @@
+{
+  "data_store_inventory": [
+    "arn:aws:s3:::customer-financial-data",
+    "arn:aws:s3:::customer-pii",
+    "arn:aws:s3:::backup-archive"
+  ],
+  "resources": [
+    {
+      "resourceId": "arn:aws:s3:::customer-financial-data",
+      "status": "Active",
+      "publicAccessBlock": true,
+      "serverSideEncryptionConfiguration": {
+        "rules": [
+          {
+            "applyServerSideEncryptionByDefault": {
+              "sseAlgorithm": "aws:kms",
+              "kmsMasterKeyId": "arn:aws:kms:eu-west-2:111122223333:key/1234-abcd"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resourceId": "arn:aws:s3:::customer-pii",
+      "status": "Active",
+      "publicAccessBlock": true,
+      "serverSideEncryptionConfiguration": {
+        "rules": [
+          {
+            "applyServerSideEncryptionByDefault": {
+              "sseAlgorithm": "aws:kms",
+              "kmsMasterKeyId": "arn:aws:kms:eu-west-2:111122223333:key/1234-abcd"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resourceId": "arn:aws:s3:::backup-archive",
+      "status": "Active",
+      "publicAccessBlock": true,
+      "serverSideEncryptionConfiguration": {
+        "rules": [
+          {
+            "applyServerSideEncryptionByDefault": {
+              "sseAlgorithm": "aws:kms",
+              "kmsMasterKeyId": "arn:aws:kms:eu-west-2:111122223333:key/1234-abcd"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

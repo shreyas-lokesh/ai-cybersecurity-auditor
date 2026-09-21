@@ -1,0 +1,11 @@
+INCIDENT RESPONSE PLAN
+Document: Incident_Response_Plan_Master
+Version: v4.2
+Approved by: Chief Information Security Officer
+Approval date: 2025-11-10
+
+Scope: all production systems and customer data.
+Roles: Incident Manager, Technical Lead, Communications Lead, Legal.
+Phases: Preparation, Detection and Analysis, Containment, Eradication, Recovery, Lessons Learned.
+Escalation: severity 1 incidents escalated to the CISO within 1 hour.
+Customer notification: within 72 hours of confirming a personal data breach.

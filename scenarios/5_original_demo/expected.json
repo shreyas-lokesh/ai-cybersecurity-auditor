@@ -1,0 +1,19 @@
+{
+  "scenario": "5_original_demo",
+  "audit_date": "2026-09-16",
+  "description": "The original Contoso evidence used in the first demo.",
+  "expected": {
+    "1": "Fail",
+    "2": "Flag",
+    "3": "Flag",
+    "4": "Flag",
+    "5": "Flag"
+  },
+  "reason": {
+    "1": "John Smith and Robert Chen signed in with password only.",
+    "2": "Two tested backups but no schedule.",
+    "3": "AES256 paired with a KMS key ID; one bucket only; no inventory.",
+    "4": "Only a register entry; no plan or test report.",
+    "5": "No training evidence supplied."
+  }
+}

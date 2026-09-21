@@ -1,0 +1,21 @@
+{
+  "tenantId": "contoso.onmicrosoft.com",
+  "policyName": "Require_MFA_Privileged_Roles",
+  "state": "enabled",
+  "conditions": {
+    "users": {
+      "includeRoles": [
+        "Global Administrator",
+        "Server Administrator",
+        "Database Administrator",
+        "Network Administrator",
+        "Security Administrator"
+      ]
+    },
+    "clientAppTypes": ["all"]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": ["mfa"]
+  }
+}

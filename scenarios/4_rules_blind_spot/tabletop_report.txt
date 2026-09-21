@@ -1,0 +1,7 @@
+TABLETOP EXERCISE REPORT
+Plan tested: Incident_Response_Plan_Master v4.2
+Scenario: ransomware on the customer database cluster
+Date conducted: 2026-04-05
+Participants: 11 (IT, Security, Legal, Communications)
+Outcome: Exercise abandoned after 30 minutes because key participants were unavailable. Objectives not met; to be rescheduled.
+Actions: Reschedule the exercise (no date set).

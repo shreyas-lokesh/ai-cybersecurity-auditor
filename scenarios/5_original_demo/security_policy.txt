@@ -1,0 +1,11 @@
+COMPANY INFORMATION SECURITY POLICY
+Reference: ISO 27001 Annex A 5.17 (Authentication Information)
+Last Updated: September 2026
+
+1. OVERVIEW
+This policy dictates the access control and authentication requirements for all internal infrastructure and cloud environments.
+
+2. PRIVILEGED ACCESS RULES
+2.1. Multi-Factor Authentication (MFA) is strictly REQUIRED for all users holding administrative or privileged roles (e.g., Global Administrator, Server Administrator, Database Administrator, Network Administrator).
+2.2. The only formally approved MFA method is a Time-Based One-Time Password (TOTP) application (e.g., Microsoft Authenticator).
+2.3. Password-only authentication is strictly prohibited for any account with privileged access rights.

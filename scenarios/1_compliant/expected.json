@@ -1,0 +1,19 @@
+{
+  "scenario": "1_compliant",
+  "audit_date": "2026-09-16",
+  "description": "Every control genuinely meets the policy.",
+  "expected": {
+    "1": "Pass",
+    "2": "Pass",
+    "3": "Pass",
+    "4": "Pass",
+    "5": "Pass"
+  },
+  "reason": {
+    "1": "All five admins covered by an enforced TOTP-only policy; all 30 sign-ins used TOTP.",
+    "2": "Schedule defined; recent successful restore tests on every server.",
+    "3": "All three inventoried stores encrypted with aws:kms.",
+    "4": "Current v4.2 plan supplied; tabletop completed 2026-04-05 and report matches.",
+    "5": "All 10 staff completed security awareness training in 2026."
+  }
+}

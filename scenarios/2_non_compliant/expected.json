@@ -1,0 +1,19 @@
+{
+  "scenario": "2_non_compliant",
+  "audit_date": "2026-09-16",
+  "description": "Clear, consistent violations.",
+  "expected": {
+    "1": "Fail",
+    "2": "Fail",
+    "3": "Fail",
+    "4": "Fail",
+    "5": "Fail"
+  },
+  "reason": {
+    "1": "Policy is report-only; two admins sign in with password only.",
+    "2": "One backup failed and two servers have no restore test.",
+    "3": "customer-pii has no encryption at rest.",
+    "4": "The register lists no incident response plan and none was supplied.",
+    "5": "No staff have completed training."
+  }
+}

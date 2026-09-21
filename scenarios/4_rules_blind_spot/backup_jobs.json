@@ -1,0 +1,46 @@
+{
+  "schedule": {
+    "backup_frequency": "daily incremental, weekly full",
+    "restore_test_frequency": "quarterly",
+    "servers": [
+      "DB-Prod-01",
+      "DB-Prod-02",
+      "App-Prod-01"
+    ]
+  },
+  "jobs": [
+    {
+      "job_id": "BKP-4001",
+      "server": "DB-Prod-01",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-01",
+      "test_result": "Completed",
+      "notes": "Restore finished but checksum verification failed on 212 files; ticket INC-4471 open."
+    },
+    {
+      "job_id": "BKP-4002",
+      "server": "DB-Prod-02",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-02",
+      "test_result": "Completed",
+      "notes": "Restore verified."
+    },
+    {
+      "job_id": "BKP-4003",
+      "server": "App-Prod-01",
+      "status": "Success",
+      "backup_type": "Full",
+      "backup_date": "2026-08-30",
+      "restoration_tested": true,
+      "test_date": "2026-09-03",
+      "test_result": "Completed",
+      "notes": "Restore verified."
+    }
+  ]
+}

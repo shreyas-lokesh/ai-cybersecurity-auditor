@@ -1,0 +1,7 @@
+TABLETOP EXERCISE REPORT
+Plan tested: Incident_Response_Plan_Master v4.2
+Scenario: ransomware on the customer database cluster
+Date conducted: 2025-02-10
+Participants: 11 (IT, Security, Legal, Communications)
+Outcome: Exercise completed.
+Actions: None recorded.

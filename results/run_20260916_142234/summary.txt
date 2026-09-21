@@ -1,0 +1,55 @@
+AI auditor experiment summary  (2026-09-16T14:22:34)
+Model: none (dry run)
+Temperature: 0   Repeats: 0   Scenarios: 1_compliant, 2_non_compliant, 3_tampered, 4_rules_blind_spot, 5_original_demo
+
+1. ACCURACY (all decisions)
+   rules      21/25 (84%)
+
+2. ACCURACY BY SCENARIO
+   scenario                       rules
+   1_compliant                      5/5
+   2_non_compliant                  5/5
+   3_tampered                       5/5
+   4_rules_blind_spot               1/5
+   5_original_demo                  5/5
+
+3. CONFUSION MATRICES (rows = expected, columns = auditor's verdict)
+   [rules]
+   expected \ got     Pass   Fail   Flag   None
+   Pass                  6      0      0      0
+   Fail                  2      6      0      0
+   Flag                  2      0      9      0
+
+6. CASE-BY-CASE (majority verdicts)
+   case                         expected      rules
+   1_compliant Q1                   Pass       Pass
+   1_compliant Q2                   Pass       Pass
+   1_compliant Q3                   Pass       Pass
+   1_compliant Q4                   Pass       Pass
+   1_compliant Q5                   Pass       Pass
+   2_non_compliant Q1               Fail       Fail
+   2_non_compliant Q2               Fail       Fail
+   2_non_compliant Q3               Fail       Fail
+   2_non_compliant Q4               Fail       Fail
+   2_non_compliant Q5               Fail       Fail
+   3_tampered Q1                    Flag       Flag
+   3_tampered Q2                    Flag       Flag
+   3_tampered Q3                    Flag       Flag
+   3_tampered Q4                    Flag       Flag
+   3_tampered Q5                    Flag       Flag
+   4_rules_blind_spot Q1            Fail       Pass
+   4_rules_blind_spot Q2            Fail       Pass
+   4_rules_blind_spot Q3            Pass       Pass
+   4_rules_blind_spot Q4            Flag       Pass
+   4_rules_blind_spot Q5            Flag       Pass
+   5_original_demo Q1               Fail       Fail
+   5_original_demo Q2               Flag       Flag
+   5_original_demo Q3               Flag       Flag
+   5_original_demo Q4               Flag       Flag
+   5_original_demo Q5               Flag       Flag
+
+Model replies with no readable verdict: 0
+
+Note: the rule checks and the scenarios were designed together, so the rules' score on
+scenarios 1-3 and 5 is not independent evidence of their quality. Scenario 4 contains
+problems the rules deliberately do not interpret.

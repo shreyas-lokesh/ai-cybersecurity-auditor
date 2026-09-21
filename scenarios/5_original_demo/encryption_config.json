@@ -1,0 +1,15 @@
+{
+  "resourceId": "arn:aws:s3:::customer-financial-data",
+  "status": "Active",
+  "serverSideEncryptionConfiguration": {
+    "rules": [
+      {
+        "applyServerSideEncryptionByDefault": {
+          "sseAlgorithm": "AES256",
+          "kmsMasterKeyId": "arn:aws:kms:eu-west-2:111122223333:key/1234-abcd"
+        }
+      }
+    ]
+  },
+  "publicAccessBlock": true
+}

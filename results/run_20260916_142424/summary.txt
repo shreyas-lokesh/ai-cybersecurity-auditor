@@ -1,0 +1,83 @@
+AI auditor experiment summary  (2026-09-16T14:24:24)
+Model: {'name': 'mistral:latest', 'digest': '6577803aa9a036369e481d648a2baebb381ebc6e897f2bb9a766a2aa7bfbc1cf', 'parameter_size': '7.2B', 'quantization': 'Q4_K_M'}
+Temperature: 0   Repeats: 1   Scenarios: 1_compliant, 2_non_compliant, 3_tampered, 4_rules_blind_spot, 5_original_demo
+
+1. ACCURACY (all decisions)
+   rules      21/25 (84%)
+   llm_blind  12/25 (48%)
+   llm_hints  21/25 (84%)
+
+2. ACCURACY BY SCENARIO
+   scenario                       rules     llm_blind     llm_hints
+   1_compliant                      5/5           5/5           5/5
+   2_non_compliant                  5/5           1/5           3/5
+   3_tampered                       5/5           1/5           5/5
+   4_rules_blind_spot               1/5           3/5           3/5
+   5_original_demo                  5/5           2/5           5/5
+
+3. CONFUSION MATRICES (rows = expected, columns = auditor's verdict)
+   [rules]
+   expected \ got     Pass   Fail   Flag   None
+   Pass                  6      0      0      0
+   Fail                  2      6      0      0
+   Flag                  2      0      9      0
+   [llm_blind]
+   expected \ got     Pass   Fail   Flag   None
+   Pass                  6      0      0      0
+   Fail                  1      1      6      0
+   Flag                  6      0      5      0
+   [llm_hints]
+   expected \ got     Pass   Fail   Flag   None
+   Pass                  6      0      0      0
+   Fail                  1      4      3      0
+   Flag                  0      0     11      0
+
+5. EFFECT OF SHOWING THE RULE FINDINGS (majority verdict per case)
+   Hints fixed a wrong verdict:  9
+     - 2_non_compliant Q1: blind=Flag, hints=Fail, expected=Fail
+     - 2_non_compliant Q4: blind=Flag, hints=Fail, expected=Fail
+     - 3_tampered Q1: blind=Pass, hints=Flag, expected=Flag
+     - 3_tampered Q2: blind=Pass, hints=Flag, expected=Flag
+     - 3_tampered Q3: blind=Pass, hints=Flag, expected=Flag
+     - 3_tampered Q5: blind=Pass, hints=Flag, expected=Flag
+     - 5_original_demo Q1: blind=Flag, hints=Fail, expected=Fail
+     - 5_original_demo Q2: blind=Pass, hints=Flag, expected=Flag
+     - 5_original_demo Q3: blind=Pass, hints=Flag, expected=Flag
+   Hints caused a wrong verdict: 0
+   Correct either way: 12    Wrong either way: 4
+   Agreement with the rules: blind 11/25 (44%), with hints 20/25 (80%)
+   (A large rise in agreement suggests the model defers to the rules.)
+
+6. CASE-BY-CASE (majority verdicts)
+   case                         expected      rules  llm_blind  llm_hints
+   1_compliant Q1                   Pass       Pass       Pass       Pass
+   1_compliant Q2                   Pass       Pass       Pass       Pass
+   1_compliant Q3                   Pass       Pass       Pass       Pass
+   1_compliant Q4                   Pass       Pass       Pass       Pass
+   1_compliant Q5                   Pass       Pass       Pass       Pass
+   2_non_compliant Q1               Fail       Fail       Flag       Fail
+   2_non_compliant Q2               Fail       Fail       Flag       Flag
+   2_non_compliant Q3               Fail       Fail       Flag       Flag
+   2_non_compliant Q4               Fail       Fail       Flag       Fail
+   2_non_compliant Q5               Fail       Fail       Fail       Fail
+   3_tampered Q1                    Flag       Flag       Pass       Flag
+   3_tampered Q2                    Flag       Flag       Pass       Flag
+   3_tampered Q3                    Flag       Flag       Pass       Flag
+   3_tampered Q4                    Flag       Flag       Flag       Flag
+   3_tampered Q5                    Flag       Flag       Pass       Flag
+   4_rules_blind_spot Q1            Fail       Pass       Pass       Pass
+   4_rules_blind_spot Q2            Fail       Pass       Flag       Flag
+   4_rules_blind_spot Q3            Pass       Pass       Pass       Pass
+   4_rules_blind_spot Q4            Flag       Pass       Flag       Flag
+   4_rules_blind_spot Q5            Flag       Pass       Flag       Flag
+   5_original_demo Q1               Fail       Fail       Flag       Fail
+   5_original_demo Q2               Flag       Flag       Pass       Flag
+   5_original_demo Q3               Flag       Flag       Pass       Flag
+   5_original_demo Q4               Flag       Flag       Flag       Flag
+   5_original_demo Q5               Flag       Flag       Flag       Flag
+
+Model replies with no readable verdict: 0
+
+Note: the rule checks and the scenarios were designed together, so the rules' score on
+scenarios 1-3 and 5 is not independent evidence of their quality. Scenario 4 contains
+problems the rules deliberately do not interpret.

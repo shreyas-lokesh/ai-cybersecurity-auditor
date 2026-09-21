@@ -1,0 +1,11 @@
+employee_id,name,department,course,completed,completion_date
+E001,Alice Johnson,IT,Fire Safety Induction,Yes,2026-02-10
+E002,John Smith,IT,Fire Safety Induction,Yes,2026-03-11
+E003,Maya Patel,IT,Fire Safety Induction,Yes,2026-04-12
+E004,Robert Chen,IT,Fire Safety Induction,Yes,2026-05-13
+E005,Sarah Williams,Security,Fire Safety Induction,Yes,2026-06-14
+E006,Tom Evans,Finance,Fire Safety Induction,Yes,2026-07-15
+E007,Priya Shah,Finance,Fire Safety Induction,Yes,2026-02-16
+E008,Liam Brown,Sales,Fire Safety Induction,Yes,2026-03-17
+E009,Emma Wilson,Sales,Fire Safety Induction,Yes,2026-04-18
+E010,Omar Ali,HR,Fire Safety Induction,Yes,2026-05-10

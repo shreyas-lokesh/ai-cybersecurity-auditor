@@ -1,0 +1,6 @@
+username,display_name,role,mfa_enabled,mfa_method,account_status
+admin@contoso.com,Alice Johnson,Global Administrator,Yes,Microsoft Authenticator (TOTP),Active
+j.smith@contoso.com,John Smith,Server Administrator,No,None,Active
+m.patel@contoso.com,Maya Patel,Database Administrator,Yes,Microsoft Authenticator (TOTP),Active
+r.chen@contoso.com,Robert Chen,Network Administrator,No,None,Active
+s.williams@contoso.com,Sarah Williams,Security Administrator,Yes,Microsoft Authenticator (TOTP),Active
